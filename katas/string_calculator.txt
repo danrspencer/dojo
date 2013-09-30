@@ -1,0 +1,15 @@
+String Calculator
+
+- It returns zero with no arguments
+
+- It returns zero with empty string
+
+- It returns zero with zero as argument
+
+- It returns the bare number
+
+- It returns the sum of space separated numbers
+
+- It returns the sum of any white space sepeaated numbers
+
+- It accepts a custom separator (e.g. "//+1+2+3+4" == 10)

@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/typescript/jasmine_sss.js" />
+        <item url="file://$PROJECT_DIR$/javascript/spec/SampleSpec.js" />
+        <item url="file://$PROJECT_DIR$/typescript/spec/SampleSpec.js" />
+        <item url="file://$PROJECT_DIR$/javascript/jasmine_sss.js" />
+        <item url="file://$PROJECT_DIR$/javascript/src/Sample.js" />
+        <item url="file://$PROJECT_DIR$/typescript/src/Sample.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/javascript/spec/SampleSpec.js" />
+      <root url="file://$PROJECT_DIR$/typescript/jasmine_sss.js" />
+      <root url="file://$PROJECT_DIR$/typescript/spec/SampleSpec.js" />
+      <root url="file://$PROJECT_DIR$/javascript/jasmine_sss.js" />
+      <root url="file://$PROJECT_DIR$/javascript/src/Sample.js" />
+      <root url="file://$PROJECT_DIR$/typescript/src/Sample.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
