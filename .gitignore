@@ -1,0 +1,12 @@
+
+.idea/
+
+typescript/*.js
+typescript/*.js.map
+typescript/**/*.js
+typescript/**/*.js.map
+!typescript/karma.conf.js
+!typescript/spec-main.js
+
+php/bin/
+php/vendor/
