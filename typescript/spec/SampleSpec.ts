@@ -11,12 +11,4 @@ describe('Sample', () => {
     sample = new Sample();
   });
 
-  it('is initializable', () => {
-
-  });
-
-  it('returns true', () => {
-    expect(sample.example()).toBe(true);
-  });
-
 });

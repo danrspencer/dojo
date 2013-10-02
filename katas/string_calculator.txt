@@ -10,6 +10,6 @@ String Calculator
 
 - It returns the sum of space separated numbers
 
-- It returns the sum of any white space sepeaated numbers
+- It returns the sum of any white space separated numbers
 
 - It accepts a custom separator (e.g. "//+1+2+3+4" == 10)
