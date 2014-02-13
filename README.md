@@ -3,6 +3,6 @@ Dojo
 
 Pre-configured Dojo and some Katas
 
-- PHPSpec for PHP
+- PHPSpec / PHPUnit for PHP
 
 - Jasmine + Karma for Typescript / Javascript
