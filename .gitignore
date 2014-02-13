@@ -8,5 +8,11 @@ typescript/**/*.js.map
 !typescript/karma.conf.js
 !typescript/spec-main.js
 
-php/bin/
-php/vendor/
+phpspec/bin/
+phpspec/vendor/
+
+phpunit/bin/
+phpunit/vendor/
+
+**/composer.phar
+**/composer.lock
