@@ -3,9 +3,9 @@
 
 class Sample {
 
-    public function example()
+    public function getMessage()
     {
-        return true;
+        return 'hello world';
     }
 
 } 
