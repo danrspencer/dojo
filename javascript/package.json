@@ -8,7 +8,9 @@
     "react": "^15.3.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "npm run flow && npm run jest",
+    "jest": "jest",
+    "flow": "flow"
   },
   "devDependencies": {
     "babel": "^6.5.2",
