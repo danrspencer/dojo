@@ -1,0 +1,23 @@
+{
+  "name": "elm-dojo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "elm-reactor",
+    "test": "elm-test",
+    "test-watch": "elm-test --watch",
+    "elm": "elm",
+    "elm-repl": "elm-repl",
+    "elm-reactor": "elm-reactor",
+    "elm-make": "elm-make",
+    "elm-package": "elm-package",
+    "elm-format": "./bin/elm-format ./src/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "elm": "^0.18.0"
+  },
+  "devDependencies": {
+    "elm-test": "0.18.*"
+  }
+}

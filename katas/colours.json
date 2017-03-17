@@ -1,0 +1,22 @@
+[
+  { "name": "Gainsboro", "colour": "#DDDDDD" },
+  { "name": "Cool Gray", "colour": "#8A92AF" },
+  { "name": "Celeste", "colour": "#CCCCCC" },
+  { "name": "Pale Slate", "colour": "#C3C3C3" },
+  { "name": "Tapa", "colour": "#777777" },
+  { "name": "Ironside Gray", "colour": "#666666" },
+  { "name": "Gravel", "colour": "#484848" },
+  { "name": "Darcula", "colour": "#444444" },
+  { "name": "Faux Black", "colour": "#222222" },
+  { "name": "Black", "colour": "#000000" },
+  { "name": "Rhino", "colour": "#353865" },
+  { "name": "Rock Blue", "colour": "#99ADCF" },
+  { "name": "Curious Blue", "colour": "#3399CC" },
+  { "name": "Astral", "colour": "#3670A2" },
+  { "name": "Something Borrowed", "colour": "#0487e5" },
+  { "name": "Something Blue", "colour": "#2AA9ee" },
+  { "name": "Something Old", "colour": "#0368d9" },
+  { "name": "Cornflower Blue", "colour": "#1E53b9" },
+  { "name": "Yale Blue", "colour": "#18418C" },
+  { "name": "Chathams Blue", "colour": "#173972" }
+]
