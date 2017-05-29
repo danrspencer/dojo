@@ -1,3 +1,12 @@
 node_modules
 elm-stuff/**
 !elm-stuff/exact-dependencies.json
+
+src/**
+!src/Sample.elm
+
+tests/**
+!tests/.gitignore
+!tests/elm-package.json
+!tests/SampleTest.elm
+!tests/Tests.elm

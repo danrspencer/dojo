@@ -2,3 +2,9 @@
 build/*
 gradle/*
 out/*
+
+src/main/java/com/**
+!src/main/java/com/Sample.java
+
+src/test/java/com/**
+!src/test/java/com/SampleTest.java

@@ -1,4 +1,4 @@
-module KataTest exposing (..)
+module SampleTest exposing (..)
 
 import ElmTest.Extra exposing (..)
 import Expect
@@ -6,7 +6,7 @@ import Expect
 
 ---
 
-import Kata exposing (..)
+import Sample exposing (..)
 
 
 all : Test
@@ -15,6 +15,6 @@ all =
         [ describe "Unit test examples"
             [ test "The Kata" <|
                 \() ->
-                    Kata.sum 1 2 |> Expect.equal 3
+                    Sample.sum 1 2 |> Expect.equal 3
             ]
         ]

@@ -13,6 +13,8 @@ $ make java
 $ make php
 ```
 
+> Note: The .gitignore files are setup to ignore any code that's not the examples. This is because you don't need to commit your kata results, it's the exercise, not that result that's important! It's also to largely to stop me accidentally commiting my own katas to this repo! 
+
 There's also some resources setup such as file watchers for Intellij. To install the file watchers run:
 
 ```

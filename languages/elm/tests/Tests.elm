@@ -7,7 +7,7 @@ import String
 
 ---
 
-import KataTest
+import SampleTest
 
 ---
 
@@ -17,7 +17,7 @@ all =
     describe "Tests"
         [
             examples
-        ,   KataTest.all
+        ,   SampleTest.all
         ]
 
 examples : Test
