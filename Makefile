@@ -2,16 +2,14 @@
 javascript:
 	cd languages/javascript && yarn install && yarn test -- --watch
 
-typescript:
-	@echo TODO
-
 elm:
 	cd languages/elm && yarn install && yarn elm-package install && yarn test -- --watch
 
 php:
-	@echo TODO
+	cd languages/php && php installer && php composer.phar install && ./phpunit-watcher.sh
 
 java:
+	cd languages/java && gradle init && gradle test --continuous
 
 intellij-file-watchers:
 	cp ./resources/intellij/watcherTasks.xml ./idea/watcherTasks.xml

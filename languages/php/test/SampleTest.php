@@ -19,4 +19,3 @@ class SampleTest extends TestCase
         expect($result)->toEqual('hello world');
     }
 }
- 
