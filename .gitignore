@@ -1,18 +1,18 @@
 
 .idea/
 
-typescript/*.js
-typescript/*.js.map
-typescript/**/*.js
-typescript/**/*.js.map
-!typescript/karma.conf.js
-!typescript/spec-main.js
+languages/typescript/*.js
+languages/typescript/*.js.map
+languages/typescript/**/*.js
+languages/typescript/**/*.js.map
+!languages/typescript/karma.conf.js
+!languages/typescript/spec-main.js
 
 phpspec/bin/
 phpspec/vendor/
 
-phpunit/bin/
-phpunit/vendor/
+languages/php/bin/
+languages/php/vendor/
 
 **/composer.phar
 **/composer.lock
