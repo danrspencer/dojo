@@ -2,7 +2,7 @@ bin
 vendor
 
 src/**
-src/Sample.php
+!src/Sample.php
 
 test/**
-test/SampleTest.php
+!test/SampleTest.php
