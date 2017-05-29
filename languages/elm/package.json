@@ -17,6 +17,7 @@
     "elm": "^0.18.0"
   },
   "devDependencies": {
+    "elm-format": "^0.6.1-alpha",
     "lobo": "^0.1.0",
     "lobo-cli": "^0.0.2"
   }
