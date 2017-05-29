@@ -31,4 +31,5 @@ e.g.
 factorise(6); // returns [ 2, 3 ]
 ```
 
+Table of prime factors:
 > ![Prime Factors Table](https://raw.githubusercontent.com/danrspencer/dojo/master/katas/prime_factors.gif "Prime Factors Table")
