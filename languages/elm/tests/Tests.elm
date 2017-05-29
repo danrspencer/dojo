@@ -1,18 +1,27 @@
 module Tests exposing (..)
 
-import Test exposing (..)
+import ElmTest.Extra exposing (..)
 import Expect
 import Fuzz exposing (list, int, tuple, string)
 import String
 
+---
 
--- PROJECT IMPORTS
+import KataTest
 
-import Kata
+---
 
 
 all : Test
 all =
+    describe "Tests"
+        [
+            examples
+        ,   KataTest.all
+        ]
+
+examples : Test
+examples =
     describe "Sample Test Suite"
         [ describe "Unit test examples"
             [ test "Addition" <|
@@ -24,9 +33,6 @@ all =
             , test "This test should fail - you should remove it" <|
                 \() ->
                     Expect.fail "Failed as expected!"
-            , test "The Kata" <|
-                \() ->
-                    Kata.sum 1 2 |> Expect.equal 3
             ]
         , describe "Fuzz test examples, using randomly generated input"
             [ fuzz (list int) "Lists always have positive length" <|

@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "elm-reactor",
-    "test": "elm-test",
-    "test-watch": "elm-test --watch",
+    "test": "lobo",
     "elm": "elm",
     "elm-repl": "elm-repl",
     "elm-reactor": "elm-reactor",
@@ -18,6 +17,7 @@
     "elm": "^0.18.0"
   },
   "devDependencies": {
-    "elm-test": "0.18.*"
+    "lobo": "^0.1.0",
+    "lobo-cli": "^0.0.2"
   }
 }
