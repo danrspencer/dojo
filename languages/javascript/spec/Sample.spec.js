@@ -1,7 +1,7 @@
 import { sample } from "../src/sample";
 
 describe("sample", () => {
-    it('returns true', function () {
+    it('returns true', () => {
         expect(sample()).toBe(true);
     });
 });
