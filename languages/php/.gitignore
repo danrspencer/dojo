@@ -1,8 +1,2 @@
 bin
 vendor
-
-src/**
-!src/Sample.php
-
-test/**
-!test/SampleTest.php
