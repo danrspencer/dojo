@@ -5,9 +5,11 @@ import Expect
 import Fuzz exposing (list, int, tuple, string)
 import String
 
+
 ---
 
 import SampleTest
+
 
 ---
 
@@ -15,10 +17,10 @@ import SampleTest
 all : Test
 all =
     describe "Tests"
-        [
-            examples
-        ,   SampleTest.all
+        [ examples
+        , SampleTest.all
         ]
+
 
 examples : Test
 examples =
