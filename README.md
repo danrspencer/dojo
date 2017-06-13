@@ -11,6 +11,7 @@ $ make elm
 $ make javascript
 $ make java
 $ make php
+$ make kotlin
 ```
 
 > Note: The .gitignore files are setup to ignore any code that's not the examples. This is because you don't need to commit your kata results, it's the exercise, not that result that's important! It's also to stop me accidentally commiting my own katas to this repo! 
