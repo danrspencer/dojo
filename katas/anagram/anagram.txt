@@ -1,5 +1,0 @@
-takes a word list in the constructor
-
-returns a space separated list of words from function 'getAnagrams' given a word as a parameter
-
-throws an exception with words less than 3 characters

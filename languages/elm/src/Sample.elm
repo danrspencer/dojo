@@ -1,5 +1,6 @@
 module Sample exposing (..)
 
 
-sum a b =
-    a + b
+nextGeneration : List (List bool) -> List (List bool)
+nextGeneration input =
+    input
