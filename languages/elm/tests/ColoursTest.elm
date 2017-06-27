@@ -14,6 +14,7 @@ all : Test
 all =
     describe "Colour"
         [ hexToDecTests
+        , decToHexTests
         , hexColourToDecColourTests
         ]
 
@@ -57,6 +58,66 @@ hexToDecTests =
         ]
 
 
+decToHexTests : Test
+decToHexTests =
+    describe "decToHex"
+        [ test "Converts 0 .. 9 directly" <|
+            \() ->
+                let
+                    input =
+                        List.range 0 9
+
+                    expected =
+                        List.map toString input
+                in
+                    List.map decToHex input |> Expect.equal expected
+        , test "Converts 10 .. 15 to [ a, b, c, d, e, f ]" <|
+            \() ->
+                let
+                    input =
+                        List.range 10 15
+                in
+                    List.map decToHex input |> Expect.equal aToF
+        , test "Converts 16 .. 31 to 10 .. 1f" <|
+            \() ->
+                let
+                    input =
+                        List.range 16 31
+                in
+                    List.map decToHex input |> Expect.equal (hexRange "1")
+        , test "Converts 32 .. 47 to 20 .. 2f" <|
+            \() ->
+                let
+                    input =
+                        List.range 32 47
+                in
+                    List.map decToHex input |> Expect.equal (hexRange "2")
+        , test "Converts 240 .. 255 to f0 .. f1" <|
+            \() ->
+                let
+                    input =
+                        List.range 240 255
+                in
+                    List.map decToHex input |> Expect.equal (hexRange "f")
+        , test "Converts 256 .. 4095 to 100 .. fff" <|
+            \() ->
+                let
+                    input =
+                        List.range 256 4095
+
+                    expected =
+                        hexRange ""
+                            |> List.concatMap hexRange
+                            |> List.concatMap hexRange
+                            |> List.filter (not << String.startsWith "0")
+                in
+                    List.map decToHex input |> Expect.equal expected
+        , test "Converts 1836536483 to 6d7752a3" <|
+            \() ->
+                decToHex 1836536483 |> Expect.equal "6d7752a3"
+        ]
+
+
 hexColourToDecColourTests : Test
 hexColourToDecColourTests =
     describe "hexColourToDec"
@@ -64,3 +125,23 @@ hexColourToDecColourTests =
             \() ->
                 Expect.equal (hexColourToDecColour "ff8212" |> withDefault ( 0, 0, 0 )) ( 255, 130, 18 )
         ]
+
+
+aToF : List String
+aToF =
+    [ "a", "b", "c", "d", "e", "f" ]
+
+
+hexRange : String -> List String
+hexRange prefix =
+    let
+        applyPrefix =
+            (++) prefix
+
+        numeric =
+            List.range 0 9 |> List.map toString |> List.map applyPrefix
+
+        alphaNumeric =
+            List.map applyPrefix aToF
+    in
+        numeric ++ alphaNumeric

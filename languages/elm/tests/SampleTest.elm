@@ -8,11 +8,15 @@ import Expect
 
 import Sample exposing (..)
 
+
 o : Bool
-o = True
+o =
+    True
+
 
 x : Bool
-x = False
+x =
+    False
 
 
 all : Test
@@ -21,39 +25,37 @@ all =
         [ test "If all cells are dead they stay dead" <|
             \() ->
                 let
-                    input = [
-                        [x, x, x, x]
-                        ,[x, x, x, x]
-                        ,[x, x, x, x]
-                        ,[x, x, x, x]
-                    ]
-
-                    output = [
-                        [x, x, x, x]
-                         ,[x, x, x, x]
-                         ,[x, x, x, x]
-                         ,[x, x, x, x]
-                     ]
-                in
-                    Expect.equal (nextGeneration input) output
-
-            , test "A Single live cell dies" <|
-                \() ->
-                    let
-                        input = [
-                            [x, x, x, x]
-                            ,[x, x, x, x]
-                            ,[x, x, x, x]
-                            ,[x, x, x, x]
+                    input =
+                        [ [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
                         ]
 
+                    output =
+                        [ [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        ]
+                in
+                    Expect.equal (nextGeneration input) output
+        , test "A Single live cell dies" <|
+            \() ->
+                let
+                    input =
+                        [ [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        ]
 
-                        output = [
-                            [x, x, x, x]
-                             ,[x, x, x, x]
-                             ,[x, x, x, x]
-                             ,[x, x, x, x]
-                         ]
-                    in
-                        Expect.equal (nextGeneration input) output
+                    output =
+                        [ [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        , [ x, x, x, x ]
+                        ]
+                in
+                    Expect.equal (nextGeneration input) output
         ]

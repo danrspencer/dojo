@@ -1,21 +1,33 @@
-module Colours exposing (hexToDec, hexColourToDecColour)
+module Colours exposing (decToHex, hexToDec, hexColourToDecColour)
 
 import Maybe exposing (withDefault)
+import Char exposing (toCode, fromCode)
+import String exposing (fromChar)
+
+
+decToHex : Int -> String
+decToHex dec =
+    let
+        powerOf =
+            dec // 16
+
+        remainder =
+            dec - 16 * powerOf
+    in
+        if powerOf >= 1 then
+            (decToHex powerOf) ++ (decToHex remainder)
+        else if dec >= 10 then
+            dec - 10 |> (+) (toCode 'a') |> fromCode |> fromChar
+        else
+            toString dec
 
 
 hexToDec : String -> Maybe Int
 hexToDec hex =
     String.split "" hex
         |> List.map hexCharToDec
-        |> \decimals ->
-            if List.any isNothing decimals then
-                Nothing
-            else
-                List.map (withDefault 0) decimals
-                    |> List.reverse
-                    |> List.indexedMap toActualValue
-                    |> List.sum
-                    |> Just
+        |> maybeList
+        |> Maybe.map (sumBaseDigits 16)
 
 
 hexColourToDecColour : String -> Maybe ( Int, Int, Int )
@@ -24,7 +36,7 @@ hexColourToDecColour hexColour =
     , colourIndexToDec 1 hexColour
     , colourIndexToDec 2 hexColour
     )
-        |> tupleOfMaybesToMaybeTuple
+        |> maybeTuple3
 
 
 colourIndexToDec : Int -> String -> Maybe Int
@@ -64,31 +76,16 @@ hexCharToDec hex =
             String.toInt hex |> Result.toMaybe
 
 
-toActualValue : Int -> Int -> Int
-toActualValue index value =
-    case index of
-        0 ->
-            value
-
-        _ ->
-            16 ^ index * value
+sumBaseDigits : Int -> List Int -> Int
+sumBaseDigits base =
+    Tuple.second << List.foldr (\v ( p, a ) -> ( p * base, a + p * v )) ( 1, 0 )
 
 
-isNothing : Maybe Int -> Bool
-isNothing value =
-    case value of
-        Just value ->
-            False
-
-        Nothing ->
-            True
+maybeTuple3 : ( Maybe a, Maybe b, Maybe c ) -> Maybe ( a, b, c )
+maybeTuple3 ( a, b, c ) =
+    Maybe.map3 (,,) a b c
 
 
-tupleOfMaybesToMaybeTuple : ( Maybe a, Maybe b, Maybe c ) -> Maybe ( a, b, c )
-tupleOfMaybesToMaybeTuple tuple =
-    case tuple of
-        ( Just a, Just b, Just c ) ->
-            Just ( a, b, c )
-
-        _ ->
-            Nothing
+maybeList : List (Maybe a) -> Maybe (List a)
+maybeList =
+    List.foldr (Maybe.map2 (::)) (Just [])
