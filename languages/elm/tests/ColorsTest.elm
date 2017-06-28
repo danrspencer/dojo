@@ -1,21 +1,23 @@
-module ColoursTest exposing (..)
+module ColorsTest exposing (..)
 
 import ElmTest.Extra exposing (..)
 import Expect
 import Maybe exposing (withDefault)
+import String exposing (concat)
 
 
 ---
 
-import Colours exposing (..)
+import Colors exposing (..)
 
 
 all : Test
 all =
-    describe "Colour"
+    describe "Color"
         [ hexToDecTests
         , decToHexTests
-        , hexColourToDecColourTests
+        , hexColorToDecColorTests
+        , colorNameTest
         ]
 
 
@@ -118,13 +120,64 @@ decToHexTests =
         ]
 
 
-hexColourToDecColourTests : Test
-hexColourToDecColourTests =
-    describe "hexColourToDec"
+hexColorToDecColorTests : Test
+hexColorToDecColorTests =
+    describe "hexColorToDec"
         [ test "Converts ff8212 to [ 255, 130, 18 ]" <|
             \() ->
-                Expect.equal (hexColourToDecColour "ff8212" |> withDefault ( 0, 0, 0 )) ( 255, 130, 18 )
+                hexColorToDecColor "ff8212" |> withDefault ( 0, 0, 0 ) |> Expect.equal ( 255, 130, 18 )
         ]
+
+
+colorList : List ( String, String )
+colorList =
+    [ ( "000000", "black" )
+    , ( "ff0000", "red" )
+    , ( "00ff00", "green" )
+    , ( "0000ff", "blue" )
+    , ( "ffffff", "white" )
+    ]
+
+
+getColorName : String -> Maybe String
+getColorName =
+    colorName colorList
+
+
+colorNameTest : Test
+colorNameTest =
+    describe "colorToNearestName" <|
+        List.concat
+            [ List.map
+                (\listItem ->
+                    let
+                        hash =
+                            Tuple.first listItem
+
+                        name =
+                            Tuple.second listItem
+                    in
+                        test
+                            ([ "Converts ", hash, " to ", name ] |> concat)
+                        <|
+                            \() ->
+                                getColorName hash
+                                    |> withDefault ""
+                                    |> Expect.equal name
+                )
+                colorList
+            , [ test "Finds a close match for red" <|
+                    \() ->
+                        getColorName "ee0000" |> withDefault "" |> Expect.equal "red"
+              , test "Matches 36a64f to green" <|
+                    \() ->
+                        getColorName "36a64f" |> withDefault "" |> Expect.equal "green"
+              ]
+            ]
+
+
+
+-- Helpers
 
 
 aToF : List String

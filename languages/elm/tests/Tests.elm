@@ -8,7 +8,7 @@ import String
 
 ---
 
-import ColoursTest
+import ColorsTest
 
 
 ---
@@ -17,7 +17,7 @@ import ColoursTest
 all : Test
 all =
     describe "Tests"
-        [ ColoursTest.all
+        [ ColorsTest.all
         ]
 
 
