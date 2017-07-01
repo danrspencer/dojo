@@ -6,7 +6,11 @@ const getDashboardDefintion = () => ({
   dashboardElements: [
     {
       containerEntityLongId: 10,
-      dashboardElementType: "Dave"
+      dashboardElementType: "DAVE",
+      viewDefinition: {
+        globalContextIdentifiers: [1, 2, 3, 4, 5],
+        currentPageIdentifiers: []
+      }
     }
   ]
 });
@@ -14,8 +18,7 @@ const getDashboardDefintion = () => ({
 describe("getObserversForGivenContext", () => {
   it("does not mutate the original object", () => {
     const definition = getDashboardDefintion();
-
-    const result = utils.getObserversForGivenContext(definition, [], 55);
+    utils.getObserversForGivenContext(definition, [], 55);
 
     expect(definition).toEqual(getDashboardDefintion());
   });
@@ -30,7 +33,29 @@ describe("getObserversForGivenContext", () => {
     expect(result).toEqual([
       {
         containerEntityLongId: 55,
-        dashboardElementType: "Dave"
+        dashboardElementType: "DAVE",
+        viewDefinition: {
+          globalContextIdentifiers: [],
+          currentPageIdentifiers: ["bunch", "of", "awesome", "ids"]
+        }
+      }
+    ]);
+  });
+
+  it("doesn't update the viewDefinition if type = text", () => {
+    const defintion = getDashboardDefintion();
+    defintion.dashboardElements[0].dashboardElementType = "TEXT";
+
+    const result = utils.getObserversForGivenContext(defintion, [], 55);
+
+    expect(result).toEqual([
+      {
+        containerEntityLongId: 55,
+        dashboardElementType: "TEXT",
+        viewDefinition: {
+          globalContextIdentifiers: [1, 2, 3, 4, 5],
+          currentPageIdentifiers: []
+        }
       }
     ]);
   });

@@ -379,49 +379,48 @@ const exports = {
     dashboardContext,
     dashboardEntityLongId
   ) {
-    var setViewDefinition = function(dashboardElement, elementIndex) {
-      var currentPages = dashboardContext[elementIndex]
+    return dashboardDefinition.dashboardElements.map(
+      updateEntityIdAndViewDefinition
+    );
+
+    function updateEntityIdAndViewDefinition(dashboardElement, index) {
+      return {
+        ...dashboardElement,
+        containerEntityLongId: dashboardEntityLongId,
+        viewDefinition: updateViewDefinition(dashboardElement, index)
+      };
+    }
+
+    function updateViewDefinition(dashboardElement, elementIndex) {
+      if (!shouldUpdateViewDefinition(dashboardElement)) {
+        return dashboardElement.viewDefinition;
+      }
+
+      const currentPages = dashboardContext[elementIndex]
         ? dashboardContext[elementIndex].currentPages
         : [];
 
-      // Convert entity long ids to entity long id identifiers
-      var identifiers = EntityLongIdHelper.entityLongIdsToEntityLongIdIdentifiers(
-        currentPages
-      );
-
       // Don't use global context, instead set what initial pages we wish to open on creation within currentPages
-      dashboardElement.viewDefinition.globalContextIdentifiers = [];
-      dashboardElement.viewDefinition.currentPageIdentifiers = identifiers;
-    };
-
-    return getInitialModelObservers(
-      dashboardDefinition,
-      dashboardEntityLongId,
-      setViewDefinition
-    );
+      return {
+        ...dashboardElement.viewDefinition,
+        globalContextIdentifiers: [],
+        currentPageIdentifiers: entityLongIdsToEntityLongIdIdentifiers(
+          currentPages
+        )
+      };
+    }
   }
 };
 
-function getInitialModelObservers(
-  dashboardDefinition,
-  dashboardEntityLongId,
-  setViewDefinition
-) {
-  return dashboardDefinition.dashboardElements.map(function(
-    dashboardElement,
-    elementIndex
-  ) {
-    dashboardElement.containerEntityLongId = dashboardEntityLongId;
+function shouldUpdateViewDefinition(dashboardElement) {
+  return (
+    dashboardElement.dashboardElementType !== "TEXT" &&
+    dashboardElement.viewDefinition
+  );
+}
 
-    if (
-      dashboardElement.dashboardElementType !== "TEXT" &&
-      dashboardElement.viewDefinition
-    ) {
-      setViewDefinition(dashboardElement, elementIndex);
-    }
-
-    return dashboardElement;
-  });
+function entityLongIdsToEntityLongIdIdentifiers() {
+  return ["bunch", "of", "awesome", "ids"];
 }
 
 export default exports;
