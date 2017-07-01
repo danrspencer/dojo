@@ -10,6 +10,8 @@
 // import HighChartsHelper from " ./HighChartsHelper";
 // import EntityLongIdHelpe from " ./EntityLongIdHelpe";
 
+import { clone } from "Ramda";
+
 function hasStaticElements(dashboardElements) {
   var addedStaticElement = false;
   for (
@@ -384,30 +386,31 @@ const exports = {
     );
 
     function updateEntityIdAndViewDefinition(dashboardElement, index) {
-      return {
-        ...dashboardElement,
-        containerEntityLongId: dashboardEntityLongId,
-        viewDefinition: updateViewDefinition(dashboardElement, index)
-      };
+      const clonedDashboardElement = clone(dashboardElement);
+      clonedDashboardElement.containerEntityLongId = dashboardEntityLongId;
+      clonedDashboardElement.viewDefinition = updateViewDefinition(
+        clonedDashboardElement,
+        index
+      );
+
+      return clonedDashboardElement;
     }
 
     function updateViewDefinition(dashboardElement, elementIndex) {
-      if (!shouldUpdateViewDefinition(dashboardElement)) {
-        return dashboardElement.viewDefinition;
+      const viewDefinition = dashboardElement.viewDefinition;
+
+      if (shouldUpdateViewDefinition(dashboardElement)) {
+        const currentPages = dashboardContext[elementIndex]
+          ? dashboardContext[elementIndex].currentPages
+          : [];
+
+        viewDefinition.globalContextIdentifiers = [];
+        viewDefinition.currentPageIdentifiers = entityLongIdsToEntityLongIdIdentifiers(
+          currentPages
+        );
       }
 
-      const currentPages = dashboardContext[elementIndex]
-        ? dashboardContext[elementIndex].currentPages
-        : [];
-
-      // Don't use global context, instead set what initial pages we wish to open on creation within currentPages
-      return {
-        ...dashboardElement.viewDefinition,
-        globalContextIdentifiers: [],
-        currentPageIdentifiers: entityLongIdsToEntityLongIdIdentifiers(
-          currentPages
-        )
-      };
+      return viewDefinition;
     }
   }
 };
